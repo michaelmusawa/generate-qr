@@ -2,14 +2,11 @@ import { staffData } from "@/app/lib/data";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
-export async function GET(
-  request: NextRequest,
-  props: {
-    params?: Promise<{
-      id?: string;
-    }>;
-  }
-) {
+export async function GET(props: {
+  params?: Promise<{
+    id?: string;
+  }>;
+}) {
   const params = await props.params;
   const id = params?.id || "";
 
