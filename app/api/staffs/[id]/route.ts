@@ -1,5 +1,5 @@
 import { staffData } from "@/app/lib/data";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
 export async function GET(props: {
