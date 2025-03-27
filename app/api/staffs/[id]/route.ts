@@ -1,14 +1,12 @@
 import { staffData } from "@/app/lib/data";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
-export async function GET(props: {
-  params?: Promise<{
-    id?: string;
-  }>;
-}) {
-  const params = await props.params;
-  const id = params?.id || "";
+export async function GET(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+  // Split the pathname by '/' and extract the last segment
+  const parts = pathname.split("/");
+  const id = parts[parts.length - 1];
 
   const decodedId = decodeURIComponent(id);
 
