@@ -5,6 +5,7 @@ export const staffData = [
     position: "Software Engineer",
     email: "john.doe@example.com",
     department: "Engineering",
+    image: "/images/image1.jpg",
   },
   {
     id: "20240365428",
@@ -12,6 +13,7 @@ export const staffData = [
     position: "Product Manager",
     email: "jane.smith@example.com",
     department: "Product",
+    image: "/images/image2.jpg",
   },
   {
     id: "19930365428",
@@ -19,6 +21,7 @@ export const staffData = [
     position: "Data Analyst",
     email: "alice.johnson@example.com",
     department: "Data Science",
+    image: "/images/image3.jpg",
   },
   {
     id: "20040363728",
@@ -26,6 +29,7 @@ export const staffData = [
     position: "HR Manager",
     email: "bob.brown@example.com",
     department: "Human Resources",
+    image: "/images/image4.jpg",
   },
   {
     id: "20240364567",
@@ -33,6 +37,7 @@ export const staffData = [
     position: "DevOps Engineer",
     email: "charlie.davis@example.com",
     department: "Engineering",
+    image: "/images/image5.jpg",
   },
   {
     id: "20240465428",
@@ -40,6 +45,7 @@ export const staffData = [
     position: "UX Designer",
     email: "diana.evans@example.com",
     department: "Design",
+    image: "/images/image6.jpg",
   },
   {
     id: "20240363452",
@@ -47,6 +53,7 @@ export const staffData = [
     position: "QA Engineer",
     email: "ethan.frank@example.com",
     department: "Quality Assurance",
+    image: "/images/image7.jpg",
   },
   {
     id: "20222265428",
@@ -54,6 +61,7 @@ export const staffData = [
     position: "Marketing Specialist",
     email: "fiona.green@example.com",
     department: "Marketing",
+    image: "/images/image8.jpg",
   },
   {
     id: "20249046528",
@@ -61,6 +69,7 @@ export const staffData = [
     position: "Sales Manager",
     email: "george.hill@example.com",
     department: "Sales",
+    image: "/images/image9.jpg",
   },
   {
     id: "19990356728",
@@ -68,5 +77,6 @@ export const staffData = [
     position: "Financial Analyst",
     email: "hannah.ives@example.com",
     department: "Finance",
+    image: "/images/image10.jpg",
   },
 ];

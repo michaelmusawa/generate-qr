@@ -4,4 +4,5 @@ export type Staff = {
   position: string;
   email: string;
   department: string;
+  image: string;
 };
