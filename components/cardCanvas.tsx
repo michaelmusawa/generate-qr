@@ -48,7 +48,7 @@ export const FlipCard = ({
             </div>
 
             {/* Profile Info */}
-            <div className="my-8 text-center">
+            <div className="mt-8 mb-6 text-center">
               <h1 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
                 {staffDetail.name}
               </h1>
@@ -62,13 +62,13 @@ export const FlipCard = ({
 
             {/* Details Grid */}
             <div className="grid gap-3 text-sm">
-              <div className="flex items-center space-x-2 p-1 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <div className="flex items-center space-x-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
                 <OfficeBuildingIcon className="w-5 h-5 text-purple-500" />
                 <span className="text-gray-600 dark:text-gray-200">
                   {staffDetail.department}
                 </span>
               </div>
-              <div className="flex items-center space-x-2 p-1 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <div className="flex items-center space-x-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
                 <EmailIcon className="w-5 h-5 text-blue-500" />
                 <span className="text-gray-600 dark:text-gray-200">
                   {staffDetail.email}
@@ -78,7 +78,7 @@ export const FlipCard = ({
 
             {/* QR Code Section */}
             <div className="mt-4 flex flex-col items-center">
-              <div className="bg-white dark:bg-gray-700 p-2 rounded-lg shadow-inner">
+              <div className="bg-gray-100 dark:bg-gray-700 p-2 rounded-lg shadow-inner">
                 <QRCodeSVG
                   value={url}
                   size={80}
