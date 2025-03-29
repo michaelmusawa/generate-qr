@@ -42,7 +42,7 @@ export const FlipCard = ({
                   width={600}
                   height={1200}
                   alt="Staff Image"
-                  className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-100 object-cover shadow-md"
+                  className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-100 object-cover shadow-md bg-gray-100/90 dark:bg-gray-900/90"
                 />
               </div>
             </div>
