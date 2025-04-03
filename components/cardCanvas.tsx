@@ -33,10 +33,42 @@ export const FlipCard = ({
       >
         {/* Front Side */}
         <div className="absolute w-full h-full backface-hidden">
-          <div className="w-full h-full p-6 rounded-2xl shadow-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border border-gray-100 dark:border-gray-700 transition-all duration-300 group-hover:shadow-xl">
-            {/* Header Section */}
-            <div className="relative bg-gradient-to-r from-emerald-700 to-yellow-400 rounded-xl p-4 mt-16 mb-2 shadow-lg">
-              <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2">
+          {/* Top Left Mosaic */}
+          <div className="absolute top-0 left-0 rotate-180 rounded-br-2xl overflow-hidden h-1/2 w-full z-[-1]">
+            <div
+              className="relative h-full w-full bg-cover"
+              style={{ backgroundImage: `url('/images/mosaic.png')` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent dark:from-gray-800" />
+            </div>
+          </div>
+
+          {/* Bottom Left Mosaic */}
+          <div className="absolute h-1/4 w-4/5 bottom-20 -left-20 rounded-br-2xl overflow-hidden rotate-90 z-[-1]">
+            <div
+              className="relative h-full w-full bg-cover"
+              style={{ backgroundImage: `url('/images/mosaic.png')` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent dark:from-gray-800" />
+            </div>
+          </div>
+
+          <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-white/10 to-gray-50/50 dark:from-gray-800 dark:to-gray-900 border border-gray-100 dark:border-gray-700 transition-all duration-300 group-hover:shadow-xl z-1">
+            <div className=" w-full h-full">
+              {/* Header Section */}
+
+              <div className="flex flex-col justify-center items-center mt-2 space-y-2">
+                <Image
+                  src={"/images/county.png"}
+                  width={600}
+                  height={1200}
+                  alt="County Image"
+                  className="w-14 h-14 rounded-full border-4 border-white dark:border-gray-100 object-cover shadow-md bg-gray-100/90 dark:bg-gray-900/90"
+                />
+                <h1 className="text-xs font-extrabold">Nairobi City County</h1>
+              </div>
+
+              <div className="flex flex-col justify-center items-center p-2">
                 <Image
                   src={staffDetail.image}
                   width={600}
@@ -45,55 +77,59 @@ export const FlipCard = ({
                   className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-100 object-cover shadow-md bg-gray-100/90 dark:bg-gray-900/90"
                 />
               </div>
-            </div>
 
-            {/* Profile Info */}
-            <div className="mt-8 mb-6 text-center">
-              <h1 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
-                {staffDetail.name}
-              </h1>
-              <div className="inline-flex items-center text-blue-600 dark:text-blue-200 px-3 py-1 rounded-full text-sm mb-1">
-                {staffDetail.position}
+              {/* Profile Info */}
+              <div className="text-center">
+                <h1 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
+                  {staffDetail.name}
+                </h1>
+                <div className="flex w-48 justify-center items-center rounded-4xl overflow-hidden mx-auto">
+                  <div className="flex-1 border-2 border-b-emerald-800"></div>
+                  <div className="flex-1 border-2 border-amber-400"></div>
+                </div>
+                <div className="inline-flex items-center text-blue-600 dark:text-blue-200 px-3 py-1 rounded-full text-sm mb-1">
+                  {staffDetail.position}
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-300 mb-1">
+                  Staff ID: {staffDetail.id}
+                </p>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-300 mb-1">
-                Staff ID: {staffDetail.id}
-              </p>
-            </div>
 
-            {/* Details Grid */}
-            <div className="grid gap-3 text-sm">
-              <div className="flex items-center space-x-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <OfficeBuildingIcon className="w-5 h-5 text-purple-500" />
-                <span className="text-gray-600 dark:text-gray-200">
-                  {staffDetail.department}
-                </span>
-              </div>
-              <div className="flex items-center space-x-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <EmailIcon className="w-5 h-5 text-blue-500" />
-                <span className="text-gray-600 dark:text-gray-200">
-                  {staffDetail.email}
-                </span>
-              </div>
-            </div>
+              {/* QR Code Section */}
+              <div className="mt-4 flex flex-col items-center px-4">
+                <div className="grid grid-cols-2 p-2 rounded-lg shadow-inner">
+                  {/* QR Code Section */}
+                  <div className="col flex justify-center items-end">
+                    <QRCodeSVG
+                      value={url}
+                      size={80}
+                      fgColor="#0ea5e9"
+                      bgColor="transparent"
+                    />
+                  </div>
 
-            {/* QR Code Section */}
-            <div className="mt-4 flex flex-col items-center">
-              <div className="bg-gray-100 dark:bg-gray-700 p-2 rounded-lg shadow-inner">
-                <QRCodeSVG
-                  value={url}
-                  size={80}
-                  fgColor="#0ea5e9"
-                  bgColor="transparent"
-                />
-              </div>
-              {/* <p className="text-xs text-gray-400 mt-2">Scan for digital ID</p> */}
-            </div>
+                  {/* Text Section */}
+                  <div className="flex flex-col justify-center items-start">
+                    <p className="text-xs text-center text-emerald-800 font-extrabold">
+                      Scan or dial *647# to verify
+                    </p>
+                    <p className="text-xs text-center mt-2 text-emerald-800 font-extrabold">
+                      www.nairobiservices.co.ke
+                    </p>
+                  </div>
+                </div>
 
-            {!hasFlippedOnce && (
-              <div className="absolute bottom-1 left-0 right-0 text-center text-xs text-gray-400 dark:text-gray-500 animate-pulse">
-                Tap to view official details
+                <p className="text-sm mt-2 text-emerald-800 font-extrabold">
+                  Let&apos;s Make Nairobi Work
+                </p>
               </div>
-            )}
+
+              {!hasFlippedOnce && (
+                <div className="absolute bottom-1 left-0 right-0 text-center text-xs text-gray-400 dark:text-gray-500 animate-pulse">
+                  Tap to view official details
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -152,39 +188,6 @@ export const FlipCard = ({
     </div>
   );
 };
-
-// Icons (Add these SVG components)
-const OfficeBuildingIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-    />
-  </svg>
-);
-
-const EmailIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-    />
-  </svg>
-);
 
 const LocationMarkerIcon = ({ className }: { className?: string }) => (
   <svg
