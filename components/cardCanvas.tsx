@@ -22,7 +22,7 @@ export const FlipCard = ({
 
   return (
     <div
-      className="max-w-sm w-full h-[480px] cursor-pointer group mx-8"
+      className="w-[340] h-[512px] cursor-pointer group mx-8  overflow-hidden rounded-2xl"
       style={{ perspective: 1000 }}
       onClick={handleFlip}
     >
@@ -32,9 +32,9 @@ export const FlipCard = ({
         }`}
       >
         {/* Front Side */}
-        <div className="absolute w-full h-full backface-hidden">
+        <div className="absolute w-full h-full shadow-2xl backface-hidden">
           {/* Top Left Mosaic */}
-          <div className="absolute top-0 left-0 rotate-180 rounded-br-2xl overflow-hidden h-1/2 w-full z-[-1]">
+          <div className="absolute top-0 left-0 rotate-180 h-1/2 w-full z-[-1]">
             <div
               className="relative h-full w-full bg-cover"
               style={{ backgroundImage: `url('/images/mosaic.png')` }}
@@ -44,7 +44,7 @@ export const FlipCard = ({
           </div>
 
           {/* Bottom Left Mosaic */}
-          <div className="absolute h-1/4 w-4/5 bottom-20 -left-20 rounded-br-2xl overflow-hidden rotate-90 z-[-1]">
+          <div className="absolute h-1/4 w-4/5 bottom-[72px] -left-[72px] rotate-90 z-[-1]">
             <div
               className="relative h-full w-full bg-cover"
               style={{ backgroundImage: `url('/images/mosaic.png')` }}
@@ -53,7 +53,7 @@ export const FlipCard = ({
             </div>
           </div>
 
-          <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-white/10 to-gray-50/50 dark:from-gray-800 dark:to-gray-900 border border-gray-100 dark:border-gray-700 transition-all duration-300 group-hover:shadow-xl z-1">
+          <div className="w-full h-full rounded-2xl overflow-hidden  bg-gradient-to-br from-white/10 to-gray-50/50 dark:from-gray-800/5 dark:to-gray-900/10 border border-gray-100 dark:border-gray-700 transition-all duration-300 group-hover:shadow-xl z-1">
             <div className=" w-full h-full">
               {/* Header Section */}
 
@@ -68,7 +68,7 @@ export const FlipCard = ({
                 <h1 className="text-xs font-extrabold">Nairobi City County</h1>
               </div>
 
-              <div className="flex flex-col justify-center items-center p-2">
+              <div className="flex flex-col justify-center items-center p-4">
                 <Image
                   src={staffDetail.image}
                   width={600}
@@ -97,12 +97,12 @@ export const FlipCard = ({
 
               {/* QR Code Section */}
               <div className="mt-4 flex flex-col items-center px-4">
-                <div className="grid grid-cols-2 p-2 rounded-lg shadow-inner">
+                <div className="grid grid-cols-2 p-2 rounded-lg shadow-sm">
                   {/* QR Code Section */}
                   <div className="col flex justify-center items-end">
                     <QRCodeSVG
                       value={url}
-                      size={80}
+                      size={90}
                       fgColor="#0ea5e9"
                       bgColor="transparent"
                     />
@@ -119,7 +119,7 @@ export const FlipCard = ({
                   </div>
                 </div>
 
-                <p className="text-sm mt-2 text-emerald-800 font-extrabold">
+                <p className="text-sm mt-4 text-emerald-800 font-extrabold">
                   Let&apos;s Make Nairobi Work
                 </p>
               </div>
