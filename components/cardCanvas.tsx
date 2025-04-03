@@ -22,12 +22,12 @@ export const FlipCard = ({
 
   return (
     <div
-      className="w-[340] h-[512px] cursor-pointer group mx-8  overflow-hidden rounded-2xl"
+      className="w-[340px] h-[512px] cursor-pointer group overflow-hidden rounded-2xl"
       style={{ perspective: 1000 }}
       onClick={handleFlip}
     >
       <div
-        className={`w-full h-full transition-transform duration-500 transform-gpu [transform-style:preserve-3d] ${
+        className={`relative w-full h-full transition-transform duration-500 transform-gpu [transform-style:preserve-3d] ${
           isFlipped ? "rotate-y-180" : ""
         }`}
       >
@@ -36,10 +36,10 @@ export const FlipCard = ({
           {/* Top Left Mosaic */}
           <div className="absolute top-0 left-0 rotate-180 h-1/2 w-full z-[-1]">
             <div
-              className="relative h-full w-full bg-cover"
+              className="relative h-full w-full bg-cover mix-blend-multiply"
               style={{ backgroundImage: `url('/images/mosaic.png')` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent dark:from-gray-800" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/50 to-transparent dark:from-gray-800/20" />
             </div>
           </div>
 
@@ -49,83 +49,93 @@ export const FlipCard = ({
               className="relative h-full w-full bg-cover"
               style={{ backgroundImage: `url('/images/mosaic.png')` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent dark:from-gray-800" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent dark:from-gray-800/20" />
             </div>
           </div>
 
-          <div className="w-full h-full rounded-2xl overflow-hidden  bg-gradient-to-br from-white/10 to-gray-50/50 dark:from-gray-800/5 dark:to-gray-900/10 border border-gray-100 dark:border-gray-700 transition-all duration-300 group-hover:shadow-xl z-1">
-            <div className=" w-full h-full">
+          {/* Card Content */}
+
+          <div className="w-full h-full rounded-2xl overflow-hidden bg-gradient-to-l from-white/50 to-transparent dark:from-gray-800/20  border-2 border-white/20 dark:border-gray-700/50 transition-all duration-300 hover:shadow-xl z-[2]">
+            <div className="relative flex flex-col h-full p-4">
               {/* Header Section */}
 
-              <div className="flex flex-col justify-center items-center mt-2 space-y-2">
-                <Image
-                  src={"/images/county.png"}
-                  width={600}
-                  height={1200}
-                  alt="County Image"
-                  className="w-14 h-14 rounded-full border-4 border-white dark:border-gray-100 object-cover shadow-md bg-gray-100/90 dark:bg-gray-900/90"
-                />
-                <h1 className="text-xs font-extrabold">Nairobi City County</h1>
-              </div>
-
-              <div className="flex flex-col justify-center items-center p-4">
-                <Image
-                  src={staffDetail.image}
-                  width={600}
-                  height={1200}
-                  alt="Staff Image"
-                  className="w-32 h-32 rounded-xl border-4 border-white dark:border-gray-100 object-cover shadow-md bg-gray-100/90 dark:bg-gray-900/90"
-                />
-              </div>
-
-              {/* Profile Info */}
-              <div className="text-center">
-                <h1 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
-                  {staffDetail.name}
-                </h1>
-                <div className="flex w-48 justify-center items-center rounded-4xl overflow-hidden mx-auto">
-                  <div className="flex-1 border-2 border-b-emerald-800"></div>
-                  <div className="flex-1 border-2 border-amber-400"></div>
+              <div className="flex flex-col items-center mb-4 space-y-2">
+                <div className="p-2 bg-white/80 dark:bg-gray-900/80 rounded-full shadow-lg">
+                  <Image
+                    src={"/images/county.png"}
+                    width={600}
+                    height={1200}
+                    alt="County Image"
+                    className="w-14 h-14 rounded-full border-4 border-white dark:border-gray-100 object-cover shadow-md bg-gray-100/90 dark:bg-gray-900/90"
+                  />
                 </div>
-                <div className="inline-flex items-center text-blue-600 dark:text-blue-200 px-3 py-1 rounded-full text-sm mb-1">
+                <h1 className="text-xs font-bold text-gray-700 dark:text-gray-200 tracking-widest">
+                  NAIROBI CITY COUNTY
+                </h1>
+              </div>
+
+              {/* Staff Photo Section */}
+              <div className="relative flex justify-center my-2">
+                <div className="relative w-32 h-32 rounded-xl overflow-hidden border-4 border-white/90 dark:border-gray-900 shadow-xl bg-gray-100 dark:bg-gray-800">
+                  <Image
+                    src={staffDetail.image}
+                    fill
+                    alt="Staff Photo"
+                    className="object-cover"
+                    sizes="(max-width: 640px) 128px"
+                  />
+                </div>
+              </div>
+
+              {/* Staff Information */}
+              <div className="text-center mb-4">
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white truncate px-4">
+                  {staffDetail.name}
+                </h2>
+                <div className="my-2 flex justify-center space-x-1">
+                  <span className="w-8 h-[2px] bg-emerald-600" />
+                  <span className="w-8 h-[2px] bg-amber-400" />
+                </div>
+                <div className="text-sm font-medium text-sky-600 dark:text-sky-300 px-3 py-1">
                   {staffDetail.position}
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-300 mb-1">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                   Staff ID: {staffDetail.id}
                 </p>
               </div>
 
-              {/* QR Code Section */}
-              <div className="mt-4 flex flex-col items-center px-4">
-                <div className="grid grid-cols-2 p-2 rounded-lg shadow-sm">
-                  {/* QR Code Section */}
-                  <div className="col flex justify-center items-end">
-                    <QRCodeSVG
-                      value={url}
-                      size={90}
-                      fgColor="#0ea5e9"
-                      bgColor="transparent"
-                    />
-                  </div>
-
-                  {/* Text Section */}
-                  <div className="flex flex-col justify-center items-start">
-                    <p className="text-xs text-center text-emerald-800 font-extrabold">
-                      Scan or dial *647# to verify
-                    </p>
-                    <p className="text-xs text-center mt-2 text-emerald-800 font-extrabold">
-                      www.nairobiservices.co.ke
-                    </p>
+              {/* Verification Section */}
+              <div className="mt-auto px-2">
+                <div className="bg-white/70 dark:bg-gray-900/90 rounded-lg p-1 shadow-md">
+                  <div className="grid grid-cols-5 gap-3 items-center">
+                    <div className="col-span-2 flex justify-center">
+                      <QRCodeSVG
+                        value={url}
+                        size={80}
+                        fgColor="#0ea5e9"
+                        bgColor="transparent"
+                        className="p-1.5"
+                      />
+                    </div>
+                    <div className="col-span-3 space-y-1">
+                      <p className="text-[0.65rem] font-bold text-emerald-700 dark:text-emerald-400 leading-tight">
+                        Scan or dial *647# to verify
+                      </p>
+                      <p className="text-[0.6rem] font-bold text-emerald-700 dark:text-emerald-400 mt-2 leading-tight">
+                        www.nairobiservices.co.ke
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <p className="text-sm mt-4 text-emerald-800 font-extrabold">
+                <p className="text-center text-xs font-bold text-emerald-700 dark:text-emerald-400 mt-3 mb-2">
                   Let&apos;s Make Nairobi Work
                 </p>
               </div>
 
+              {/* Flip Indicator */}
               {!hasFlippedOnce && (
-                <div className="absolute bottom-1 left-0 right-0 text-center text-xs text-gray-400 dark:text-gray-500 animate-pulse">
+                <div className="absolute -bottom-1 left-0 right-0 text-center text-[0.6rem] text-gray-400 dark:text-gray-400 animate-pulse">
                   Tap to view official details
                 </div>
               )}
@@ -135,17 +145,18 @@ export const FlipCard = ({
 
         {/* Back Side */}
         <div className="absolute w-full h-full backface-hidden rotate-y-180">
-          <div className="w-full h-full p-6 rounded-2xl shadow-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border border-gray-100 dark:border-gray-700">
+          <div className="w-full h-full px-6 py-3 rounded-2xl shadow-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border border-gray-100 dark:border-gray-700">
             {/* County Header */}
-            <div className="bg-gradient-to-r from-emerald-700 to-yellow-400 rounded-xl p-4 -mt-2 mb-6 shadow-lg text-center">
-              <h2 className="text-xl font-bold text-white mb-2">
+
+            <div className="relative bg-gradient-to-r from-emerald-700 to-yellow-400 rounded-xl p-4 text-center space-y-3">
+              <h2 className="text-xl font-bold text-white/95 drop-shadow-md">
                 Nairobi City County
               </h2>
-              <div className="w-16 h-16 bg-white/20 rounded-full mx-auto p-2">
+              <div className="mx-auto w-14 h-14 p-1.5 bg-white/20 rounded-full shadow-inner">
                 <Image
-                  src="/images/county.png" // Add county seal image
-                  width={64}
-                  height={64}
+                  src="/images/county.png"
+                  width={56}
+                  height={56}
                   alt="County Seal"
                   className="w-full h-full object-contain"
                 />
@@ -153,34 +164,50 @@ export const FlipCard = ({
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-4 text-center">
+            <div className="space-y-3 text-center flex-grow mt-4">
+              {/* Address Section */}
               <div className="flex flex-col items-center">
-                <LocationMarkerIcon className="w-6 h-6 text-purple-500 mb-2" />
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <div className="mb-2 p-2 bg-white/80 dark:bg-gray-900/80 rounded-full shadow-sm">
+                  <LocationMarkerIcon className="w-5 h-5 text-purple-600/90 dark:text-purple-400" />
+                </div>
+                <p className="text-sm text-gray-700 dark:text-gray-200 leading-snug">
                   City Hall, City Hall Way
                   <br />
-                  P.O Box 30075-00100
+                  <span className="text-xs">P.O Box 30075-00100</span>
                   <br />
                   Nairobi, Kenya
                 </p>
               </div>
 
+              {/* Phone Section */}
               <div className="flex flex-col items-center">
-                <PhoneIcon className="w-6 h-6 text-blue-500 mb-2" />
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <div className="mb-2 p-2 bg-white/80 dark:bg-gray-900/80 rounded-full shadow-sm">
+                  <PhoneIcon className="w-5 h-5 text-sky-600/90 dark:text-sky-400" />
+                </div>
+                <p className="text-sm text-gray-700 dark:text-gray-200 leading-snug">
                   +254 725 624 489
                   <br />
                   +254 738 041 292
                 </p>
               </div>
 
-              <div className="mt-4 border-t pt-4 border-gray-200 dark:border-gray-600">
-                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              {/* Disclaimer Footer */}
+              <div className="mt-6 pt-4 border-t border-gray-200/80 dark:border-gray-600/50">
+                <p className="text-xs text-gray-600/90 dark:text-gray-300/80 leading-relaxed">
                   This identification card remains property of Nairobi City
-                  County. If found, please return to any county office or
-                  contact the numbers above.
+                  County.
+                  <br />
+                  If found, please return to any county office or contact the
+                  numbers above.
                 </p>
               </div>
+            </div>
+
+            {/* Subtle County URL */}
+            <div className="mt-4 text-center">
+              <p className="text-[0.65rem] font-medium text-emerald-700/80 dark:text-emerald-400/80">
+                www.nairobiservices.co.ke
+              </p>
             </div>
           </div>
         </div>
