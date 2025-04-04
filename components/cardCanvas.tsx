@@ -22,7 +22,7 @@ export const FlipCard = ({
 
   return (
     <div
-      className="w-[340px] h-[512px] cursor-pointer group overflow-hidden rounded-2xl"
+      className="w-[340px] h-[512px] cursor-pointer group rounded-2xl"
       style={{ perspective: 1000 }}
       onClick={handleFlip}
     >
@@ -32,7 +32,7 @@ export const FlipCard = ({
         }`}
       >
         {/* Front Side */}
-        <div className="absolute w-full h-full shadow-2xl backface-hidden">
+        <div className="absolute w-full h-full border border-gray-100 dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden backface-hidden">
           {/* Top Left Mosaic */}
           <div className="absolute top-0 left-0 rotate-180 h-1/2 w-full z-[-1]">
             <div
