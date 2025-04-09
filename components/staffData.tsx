@@ -1,20 +1,23 @@
+import { staffData } from "@/app/lib/data";
 import { Staff } from "@/app/lib/definitions";
 import QRCodeSection from "@/components/qrCode";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+// const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
 export default async function HomePage() {
   let staffs: Staff[] = [];
 
-  try {
-    const response = await fetch(`${BASE_URL}/api/staffs`);
-    if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
-    }
-    staffs = await response.json();
-  } catch (err) {
-    console.error("Fetching staff data failed:", err);
-  }
+  staffs = staffData;
+
+  // try {
+  //   const response = await fetch(`/api/staffs`);
+  //   if (!response.ok) {
+  //     throw new Error(`Error: ${response.statusText}`);
+  //   }
+  //   staffs = await response.json();
+  // } catch (err) {
+  //   console.error("Fetching staff data failed:", err);
+  // }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
